@@ -16,13 +16,13 @@ export default function App()  {
 
   return (
     <NavigationContainer>
-      <Teams.Provider value={{token, setToken}}>
+      <Token.Provider value={{token, setToken}}>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
-      </Teams.Provider>
+      </Token.Provider>
     </NavigationContainer>
 
 
