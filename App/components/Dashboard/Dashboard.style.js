@@ -8,6 +8,28 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center'
     },
+    header: {
+        backgroundColor: 'paleturquoise',
+        height: 50,
+        width:'100%',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    btnPress: {
+        height:'100%',
+        width:'50%',
+        backgroundColor:'mediumturquoise',
+        alignItems:'center',
+        justifyContent:'center'
+    },
+    btnNormal: {
+        height:'100%',
+        width:'50%',
+        backgroundColor:'paleturquoise',
+        alignItems:'center',
+        justifyContent:'center'
+    },
     button: {
         // elevation:1,
         width: 200,
@@ -40,11 +62,9 @@ export const styles = StyleSheet.create({
         paddingRight: 15
     },
     text: {
-        fontSize: 30,
+        fontSize: 18,
         fontWeight: 'bold',
-        color: 'mediumturquoise',
-        padding: 20,
-        marginTop: 100
+        color: 'white',
     },
     error: {
         color: 'red',

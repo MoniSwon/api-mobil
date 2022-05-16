@@ -7,7 +7,7 @@ export default function Home() {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Welcome to Find your Restaurant !</Text>
+            <Text style={styles.text}>Welcome to MeHungry</Text>
             <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.textButton}>Log in</Text>
             </Pressable>
