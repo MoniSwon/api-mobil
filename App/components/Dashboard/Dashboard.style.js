@@ -1,6 +1,4 @@
-import reactDom from "react-dom";
 import { StyleSheet } from "react-native";
-import { reportLogBoxError } from "react-native/Libraries/LogBox/Data/LogBoxData";
 
 export const styles = StyleSheet.create({
     container: {

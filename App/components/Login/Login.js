@@ -1,25 +1,34 @@
 import { Text, View, TextInput } from 'react-native';
 import { styles } from './Login.style';
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import { getUser } from '../../../Api/ApiCall';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { useNavigation } from '@react-navigation/native';
-
-
+import { Token, UserData } from '../../context/context';
 
 export default function Login() {
-    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const {token, setToken} = useContext(Token);
+    const {userData, setUserData} = useContext(UserData);
     const [error, setError] = useState("");
+    const navigation = useNavigation();
 
-    const newUser = () => {
+    const connectUser = () => {
         const data = {
             identifier: email,
             password: password
         }
-        console.log(data)
-        //createUser(data).then(res => console.log(res.status)).catch(error =>setError(error.toString()));
+        //monica@gmail.com
+        //password
+        //monica
+        getUser(data).then(res => handleData(res)).catch(error =>setError(error.toString()));
+    }
+
+    const handleData = (res) => {
+        setToken(res.jwt)
+        setUserData(res.user)
+        navigation.navigate('Dashboard')
     }
 
     return (
@@ -36,10 +45,13 @@ export default function Login() {
                 secureTextEntry={true}
                 onChangeText={(password) => setPassword(password.trim())}
             />
-            <Pressable style={styles.button} onPress={() => newUser()}>
+            <Pressable style={styles.button} onPress={() => connectUser()}>
                 <Text style={styles.textButton}>Submit</Text>
             </Pressable>
             <Text style={styles.error}>{error.substring(12)}</Text>
+            <Pressable onPress={() => navigation.navigate('Register')}>
+                <Text style={styles.registration}>Registration</Text>
+            </Pressable>
         </View>
     );
 }
