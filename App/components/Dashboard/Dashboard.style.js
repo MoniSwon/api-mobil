@@ -2,78 +2,123 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'paleturquoise',
+        backgroundColor: 'mediumturquoise',
         height: '100%',
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
+        flexDirection: 'column'
     },
     header: {
         backgroundColor: 'paleturquoise',
         height: 50,
-        width:'100%',
+        width: '100%',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center'
     },
     btnPress: {
-        height:'100%',
-        width:'50%',
-        backgroundColor:'mediumturquoise',
-        alignItems:'center',
-        justifyContent:'center'
+        height: '100%',
+        width: '50%',
+        backgroundColor: 'mediumturquoise',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     btnNormal: {
-        height:'100%',
-        width:'50%',
-        backgroundColor:'paleturquoise',
-        alignItems:'center',
-        justifyContent:'center'
+        height: '100%',
+        width: '50%',
+        backgroundColor: 'paleturquoise',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     button: {
-        // elevation:1,
-        width: 200,
-        display: 'flex',
+        width: 60,
+        height: 60,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 30,
-        paddingRight: 30,
-        borderRadius: 30,
-        backgroundColor: 'mediumturquoise',
-        marginTop: 20
+        borderRadius: 100,
+        backgroundColor: 'paleturquoise',
+        shadowColor: 'teal',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 2.62,
+
+        elevation: 4,
     },
     textButton: {
-        fontSize: 22,
+        fontSize: 26,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'teal'
     },
     textInput: {
         fontSize: 18,
         color: 'black',
-        marginTop: 10,
         marginBottom: 20,
         backgroundColor: 'white',
-        width: 250,
+        width: '50%',
         height: 45,
-        borderRadius: 10,
         paddingLeft: 15,
-        paddingRight: 15
+        paddingRight: 15,
+        marginLeft: 0,
     },
     text: {
         fontSize: 18,
         fontWeight: 'bold',
         color: 'white',
     },
-    error: {
-        color: 'red',
-        fontSize: 10,
-        fontStyle: 'italic'
+    search: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 15
     },
-    registration: {
-        marginTop:6,
-        color: 'dodgerblue',
-        textDecorationLine:'underline'
+    searchIcon: {
+        backgroundColor: 'white',
+        height: 45,
+        width: 50,
+        borderTopRightRadius: 20,
+        borderBottomRightRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textIcon: {
+        fontSize: 25
+    },
+    textTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'teal',
+        marginTop: 10
+    },
+    textAddress: {
+        paddingTop: 3,
+        fontSize: 16,
+        color: 'white',
+        fontWeight: '400',
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        width: '80%',
+        height: '80%',
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    buttonClose: {
+
     }
+
 });
