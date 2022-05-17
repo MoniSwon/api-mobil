@@ -150,7 +150,12 @@ export function BodyIWantToTry() {
 
 export function BodyMap() {
     return (
-        <Text>Hello</Text>
+        <View style={styles.containerMap}>
+        <View style={styles.search}>
+            <TextInput style={styles.textInput}></TextInput>
+            <Pressable style={styles.searchIcon}><Text style={styles.textIcon}>🔎</Text></Pressable>
+        </View>
+        </View>
     );
 }
 
@@ -168,7 +173,6 @@ export default function Dashboard() {
 
     return (
         <View>
-            
             <View style={isPressRestaurant ? styles.header : styles.headerMap}>
                 <Pressable
                     style={isPress ? styles.btnPress : styles.btnNormal}
@@ -187,10 +191,10 @@ export default function Dashboard() {
                     <Text style={styles.text}>I WANT TO TRY</Text>
                 </Pressable>
             </View>
-            {isPressRestaurant ? (isPress ? <BodyIAteThere /> : <BodyIWantToTry />) : <BodyMap/>}
-            <View style = {styles.footer}>
-            <Pressable
-                    style={isPressRestaurant ? styles.btnPress : styles.btnNormal}
+            {isPressRestaurant ? (isPress ? <BodyIAteThere /> : <BodyIWantToTry />) : <BodyMap />}
+            <View style={styles.footer}>
+                <Pressable
+                    style={styles.btnPress}
                     onPress={() => {
                         setIsPressRestaurant(true)
                         setIsPressMap(false)
@@ -198,7 +202,7 @@ export default function Dashboard() {
                     <Text style={styles.text}>🎯</Text>
                 </Pressable>
                 <Pressable
-                    style={isPressMap ? styles.btnPress : styles.btnNormal}
+                    style={styles.darkerButton}
                     onPress={() => {
                         setIsPressMap(true)
                         setIsPressRestaurant(false)
@@ -206,7 +210,7 @@ export default function Dashboard() {
                     <Text style={styles.text}>🌍</Text>
                 </Pressable>
             </View>
-            
+
         </View>
     );
 }

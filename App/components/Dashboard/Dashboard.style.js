@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column'
     },
+    containerMap: {
+        backgroundColor: 'teal',
+        height: 770,
+        display: 'flex',
+        flexDirection: 'column'
+    },
     header: {
         backgroundColor: 'paleturquoise',
         height: 50,
@@ -29,10 +35,17 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    darkerButton: {
+        height: '100%',
+        width: '50%',
+        backgroundColor: 'teal',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     button: {
         position: 'absolute',
         right: 0,
-        top: '60%',
+        top: 600,
         right: 20,
         width: 75,
         height: 75,
@@ -41,14 +54,8 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: 'paleturquoise',
         shadowColor: 'teal',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 2.62,
-
-        elevation: 4,
+        elevation:4,
+        zIndex:1
     },
     textButton: {
         fontSize: 26,
