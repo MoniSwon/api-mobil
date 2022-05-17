@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
@@ -54,8 +54,8 @@ export const styles = StyleSheet.create({
         borderRadius: 100,
         backgroundColor: 'paleturquoise',
         shadowColor: 'teal',
-        elevation:4,
-        zIndex:1
+        elevation: 4,
+        zIndex: 1
     },
     textButton: {
         fontSize: 26,
@@ -160,14 +160,18 @@ export const styles = StyleSheet.create({
     },
     footer: {
         width: '100%',
-        height:50,
-        backgroundColor:'teal',
+        height: 50,
+        backgroundColor: 'teal',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center'
     },
     headerMap: {
-        height:0
+        height: 0
+    },
+    map: {
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     }
 
 });

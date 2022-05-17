@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Token, UserData } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
 import { getPlaces, postPlaces } from '../../../Api/ApiCall';
+import MapView from 'react-native-maps';
+
 
 export function BodyIAteThere() {
     const [places, setPlaces] = useState("");
@@ -290,6 +292,7 @@ export function BodyMap() {
                 <TextInput style={styles.textInput}></TextInput>
                 <Pressable style={styles.searchIcon}><Text style={styles.textIcon}>🔎</Text></Pressable>
             </View>
+            <MapView style={styles.map} />
         </View>
     );
 }
