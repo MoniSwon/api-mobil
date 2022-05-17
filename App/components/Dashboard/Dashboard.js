@@ -142,6 +142,18 @@ export function BodyIAteThere() {
     );
 }
 
+export function BodyIWantToTry() {
+    return (
+        <Text>Hey</Text>
+    );
+}
+
+export function BodyMap() {
+    return (
+        <Text>Hello</Text>
+    );
+}
+
 
 export default function Dashboard() {
     const navigation = useNavigation();
@@ -149,12 +161,15 @@ export default function Dashboard() {
     const { userData, setUserData } = useContext(UserData);
     const [isPress, setIsPress] = useState(true);
     const [isPressSecond, setIsPressSecond] = useState(false);
+    const [isPressRestaurant, setIsPressRestaurant] = useState(true);
+    const [isPressMap, setIsPressMap] = useState(false);
 
 
 
     return (
         <View>
-            <View style={styles.header}>
+            
+            <View style={isPressRestaurant ? styles.header : styles.headerMap}>
                 <Pressable
                     style={isPress ? styles.btnPress : styles.btnNormal}
                     onPress={() => {
@@ -172,7 +187,26 @@ export default function Dashboard() {
                     <Text style={styles.text}>I WANT TO TRY</Text>
                 </Pressable>
             </View>
-            <BodyIAteThere />
+            {isPressRestaurant ? (isPress ? <BodyIAteThere /> : <BodyIWantToTry />) : <BodyMap/>}
+            <View style = {styles.footer}>
+            <Pressable
+                    style={isPressRestaurant ? styles.btnPress : styles.btnNormal}
+                    onPress={() => {
+                        setIsPressRestaurant(true)
+                        setIsPressMap(false)
+                    }}>
+                    <Text style={styles.text}>🎯</Text>
+                </Pressable>
+                <Pressable
+                    style={isPressMap ? styles.btnPress : styles.btnNormal}
+                    onPress={() => {
+                        setIsPressMap(true)
+                        setIsPressRestaurant(false)
+                    }}>
+                    <Text style={styles.text}>🌍</Text>
+                </Pressable>
+            </View>
+            
         </View>
     );
 }

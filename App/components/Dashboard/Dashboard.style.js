@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         backgroundColor: 'mediumturquoise',
-        height: '100%',
+        height: 720,
         display: 'flex',
         flexDirection: 'column'
     },
@@ -30,10 +30,10 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     button: {
-        position:'absolute',
-        right:0,
-        top:'60%',
-        right:20,
+        position: 'absolute',
+        right: 0,
+        top: '60%',
+        right: 20,
         width: 75,
         height: 75,
         alignItems: 'center',
@@ -122,34 +122,45 @@ export const styles = StyleSheet.create({
         elevation: 5
     },
     buttonClose: {
-        display:'flex',
-        alignItems:'flex-end',
-        marginRight:0,
-        width:'100%',
-        height:20,
+        display: 'flex',
+        alignItems: 'flex-end',
+        marginRight: 0,
+        width: '100%',
+        height: 20,
     },
     textButtonClose: {
-        backgroundColor:'white',
-        height:20,
-        width:20,
-        fontSize:20
+        backgroundColor: 'white',
+        height: 20,
+        width: 20,
+        fontSize: 20
     },
-    inputModal:{
-        fontSize:20,
-        fontWeight:'300',
-        marginBottom:30,
-        marginLeft:15,
-        backgroundColor:'paleturquoise',
-        height:45,
-        width:'90%',
-        borderRadius:10,
-        paddingLeft:20
+    inputModal: {
+        fontSize: 20,
+        fontWeight: '300',
+        marginBottom: 30,
+        marginLeft: 15,
+        backgroundColor: 'paleturquoise',
+        height: 45,
+        width: '90%',
+        borderRadius: 10,
+        paddingLeft: 20
     },
     modalTitle: {
-        fontSize:25,
-        color:'teal',
-        fontWeight:'500',
-        marginBottom:50
+        fontSize: 25,
+        color: 'teal',
+        fontWeight: '500',
+        marginBottom: 50
+    },
+    footer: {
+        width: '100%',
+        height:50,
+        backgroundColor:'teal',
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    headerMap: {
+        height:0
     }
 
 });
