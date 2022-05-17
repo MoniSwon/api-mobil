@@ -30,8 +30,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     button: {
-        width: 60,
-        height: 60,
+        position:'absolute',
+        right:0,
+        top:'60%',
+        right:20,
+        width: 75,
+        height: 75,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 100,
@@ -103,10 +107,10 @@ export const styles = StyleSheet.create({
         marginTop: 22
     },
     modalView: {
-        width: '80%',
-        height: '80%',
+        width: '90%',
+        height: 700,
         backgroundColor: "white",
-        borderRadius: 20,
+        borderRadius: 10,
         padding: 35,
         shadowColor: "#000",
         shadowOffset: {
@@ -118,7 +122,34 @@ export const styles = StyleSheet.create({
         elevation: 5
     },
     buttonClose: {
-
+        display:'flex',
+        alignItems:'flex-end',
+        marginRight:0,
+        width:'100%',
+        height:20,
+    },
+    textButtonClose: {
+        backgroundColor:'white',
+        height:20,
+        width:20,
+        fontSize:20
+    },
+    inputModal:{
+        fontSize:20,
+        fontWeight:'300',
+        marginBottom:30,
+        marginLeft:15,
+        backgroundColor:'paleturquoise',
+        height:45,
+        width:'90%',
+        borderRadius:10,
+        paddingLeft:20
+    },
+    modalTitle: {
+        fontSize:25,
+        color:'teal',
+        fontWeight:'500',
+        marginBottom:50
     }
 
 });
