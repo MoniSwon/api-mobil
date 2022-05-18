@@ -44,6 +44,12 @@ export function BodyMap() {
                     title={x.attributes.title}
                     description={x.attributes.comment} />)}
                     ) : null }
+                    {placesNotGone ? placesNotGone.map(x => {return (<Marker coordinate={{ latitude: x.attributes.latitude, longitude: x.attributes.longitude }}
+                    pinColor={"gray"} // any color
+                    key={x.id}
+                    title={x.attributes.title}
+                    description={x.attributes.comment} />)}
+                    ) : null }
                 <Marker coordinate={{ latitude: 45.615285, longitude: 5.210490 }} // I live exactly here
                     pinColor={"purple"} // any color
                     title={"title"}
