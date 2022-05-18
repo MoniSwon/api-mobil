@@ -172,6 +172,26 @@ export const styles = StyleSheet.create({
     map: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
-    }
+    },
+    list: {
+        width: '85%',
+        borderBottomColor: 'teal',
+        borderBottomWidth: 2,
+        flexDirection:'row'
+    },
+    editIcon: {
+        position:'absolute',
+        right:0
+    },
+    modalButton : {
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        borderColor:'teal',
+        borderWidth:3,
+        borderRadius:10,
+        backgroundColor:'white',
+        marginTop:20
+        }
 
 });

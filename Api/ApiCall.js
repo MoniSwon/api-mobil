@@ -19,3 +19,8 @@ export async function postPlaces(token, data) {
     const answer = await axios.post(`https://digitalcampus.nerdy-bear.com/api/places`, data, { headers: {"Authorization" : `Bearer ${token}`} })
     return answer.data
 }
+
+export async function putPlaces(token, data, id) {
+    const answer = await axios.put("https://digitalcampus.nerdy-bear.com/api/places/" + id, data, { headers: {"Authorization" : `Bearer ${token}`} })
+    return answer.data
+}
