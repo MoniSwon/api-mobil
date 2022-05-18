@@ -24,3 +24,8 @@ export async function putPlaces(token, data, id) {
     const answer = await axios.put("https://digitalcampus.nerdy-bear.com/api/places/" + id, data, { headers: {"Authorization" : `Bearer ${token}`} })
     return answer.data
 }
+
+export async function deletePlace(token, id) {
+    const answer = await axios.delete("https://digitalcampus.nerdy-bear.com/api/places/" + id, { headers: {"Authorization" : `Bearer ${token}`} })
+    return answer.data
+}

@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { Token, UserData } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
-import { getPlaces, postPlaces, putPlaces } from '../../../Api/ApiCall';
+import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiCall';
 import MapView from 'react-native-maps';
 
 
@@ -27,7 +27,7 @@ export function BodyIAteThere() {
             const gone = result.filter((key) => key.attributes.gone)
             setPlaces(gone)
         })
-    });
+    }, []);
 
     const sendPlace = () => {
         const data = {
@@ -68,8 +68,12 @@ export function BodyIAteThere() {
                 type: 1
             }
         }
-        console.log("https://digitalcampus.nerdy-bear.com/api/places/" + idToEdit)
         putPlaces(token, data, idToEdit)
+        setEditModalVisible(!editModalVisible)
+    }
+
+    const deleteThePlace = () => {
+        deletePlace(token, idToEdit)
         setEditModalVisible(!editModalVisible)
     }
 
@@ -232,6 +236,9 @@ export function BodyIAteThere() {
                                 <View style={styles.containerButton}>
                                     <Pressable style={styles.modalButton} onPress={() => editPlace()}>
                                         <Text style={styles.textButton}>Edit</Text>
+                                    </Pressable>
+                                    <Pressable style={styles.modalButton} onPress={() => deleteThePlace()}>
+                                        <Text style={styles.textButton}>Delete</Text>
                                     </Pressable>
                                 </View>
                             </View>
