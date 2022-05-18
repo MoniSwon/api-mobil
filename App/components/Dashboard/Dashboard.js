@@ -1,20 +1,12 @@
-import { Text, Pressable, View, TextInput, Modal } from 'react-native';
+import { Text, Pressable, View } from 'react-native';
 import { styles } from './Dashboard.style';
-import { useState, useContext, useEffect } from "react";
-import { useNavigation } from '@react-navigation/native';
-import { Token, UserData } from '../../context/context';
-import { FlatList, SafeAreaView } from 'react-native';
-import { getPlaces, postPlaces } from '../../../Api/ApiCall';
-import MapView from 'react-native-maps';
+import { useState } from "react";
 import { BodyIAteThere } from './BodyIAteThere';
 import { BodyIWantToTry } from './BodyIWantToTry';
 import { BodyMap } from './BodyMap';
 
 
 export default function Dashboard() {
-    const navigation = useNavigation();
-    const { token, setToken } = useContext(Token);
-    const { userData, setUserData } = useContext(UserData);
     const [isPress, setIsPress] = useState(true);
     const [isPressSecond, setIsPressSecond] = useState(false);
     const [isPressRestaurant, setIsPressRestaurant] = useState(true);

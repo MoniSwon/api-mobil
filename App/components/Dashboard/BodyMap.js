@@ -1,13 +1,6 @@
-import { Text, Pressable, View, TextInput, Modal } from 'react-native';
+import { Text, Pressable, View, TextInput } from 'react-native';
 import { styles } from './Dashboard.style';
-import { useState, useContext, useEffect } from "react";
-import { useNavigation } from '@react-navigation/native';
-import { Token, UserData } from '../../context/context';
-import { FlatList, SafeAreaView } from 'react-native';
-import { getPlaces, postPlaces } from '../../../Api/ApiCall';
-import MapView from 'react-native-maps';
-import { BodyIAteThere } from './BodyIAteThere';
-import { BodyIWantToTry } from './BodyIWantToTry';
+import MapView, { Marker } from 'react-native-maps';
 
 export function BodyMap() {
     return (
@@ -16,7 +9,20 @@ export function BodyMap() {
                 <TextInput style={styles.textInput}></TextInput>
                 <Pressable style={styles.searchIcon}><Text style={styles.textIcon}>🔎</Text></Pressable>
             </View>
-            <MapView style={styles.map} />
+            <MapView
+    style={styles.map}
+    region={{
+    latitude: 45.616570, //My home :)
+    longitude: 5.210190,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+    }}
+    >
+        <Marker coordinate = {{latitude: 37.78825,longitude: -122.4324}}
+         pinColor = {"purple"} // any color
+         title={"title"}
+         description={"description"}/>
+    </MapView>
         </View>
     );
 }

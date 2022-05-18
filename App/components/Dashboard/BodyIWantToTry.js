@@ -1,11 +1,9 @@
 import { Text, Pressable, View, TextInput, Modal } from 'react-native';
 import { styles } from './Dashboard.style';
 import { useState, useContext, useEffect } from "react";
-import { useNavigation } from '@react-navigation/native';
 import { Token, UserData } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
 import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiCall';
-import MapView from 'react-native-maps';
 
 export function BodyIWantToTry() {
     const { token, setToken } = useContext(Token);
