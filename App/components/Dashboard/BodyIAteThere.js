@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { Token, UserData } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
 import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiCall';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function BodyIAteThere() {
     const [places, setPlaces] = useState("");
@@ -20,12 +20,22 @@ export function BodyIAteThere() {
     const [idToEdit, setIdToEdit] = useState("");
 
     useEffect(() => {
+        getToken().then(res => setToken(res))
         getPlaces(token).then(res => {
             const result = res.data
             const gone = result.filter((key) => key.attributes.gone)
             setPlaces(gone)
         })
     }, []);
+
+    const getToken = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('token')
+            return jsonValue != null ? jsonValue : null;
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const sendPlace = () => {
         const data = {

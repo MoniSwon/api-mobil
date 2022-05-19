@@ -5,6 +5,7 @@ import { getUser } from '../../../Api/ApiCall';
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { useNavigation } from '@react-navigation/native';
 import { Token, UserData } from '../../context/context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -27,9 +28,29 @@ export default function Login() {
 
     const handleData = (res) => {
         setToken(res.jwt)
+        storeToken(res.jwt)
         setUserData(res.user)
+        storeData(res.user)
         navigation.navigate('Dashboard')
     }
+
+    const storeToken = async (value) => {
+        try {
+            const jsonValue = value
+          await AsyncStorage.setItem('token', jsonValue)
+          console.log(jsonValue)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+
+      const storeData = async (value) => {
+        try {
+          await AsyncStorage.setItem('@user', JSON.stringify(value))
+        } catch (e) {
+          console.log(e)
+        }
+      }
 
     return (
         <View style={styles.container}>
