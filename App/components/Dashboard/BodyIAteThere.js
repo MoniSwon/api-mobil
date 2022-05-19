@@ -1,14 +1,12 @@
 import { Text, Pressable, View, TextInput, Modal } from 'react-native';
 import { styles } from './Dashboard.style';
 import { useState, useContext, useEffect } from "react";
-import { Token, UserData } from '../../context/context';
+import { Token } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
 import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiCall';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { reloadAsync } from 'expo-updates';
 
 export function BodyIAteThere() {
-    const [places, setPlaces] = useState("");
     const { token, setToken } = useContext(Token);
     const [modalVisible, setModalVisible] = useState(false);
     const [editModalVisible, setEditModalVisible] = useState(false);
@@ -19,7 +17,9 @@ export function BodyIAteThere() {
     const [comment, setComment] = useState("");
     const [dataToEdit, setDataToEdit] = useState("");
     const [idToEdit, setIdToEdit] = useState("");
-
+    const [search, setSearch] = useState('');
+    const [filteredDataSource, setFilteredDataSource] = useState([]);
+    const [masterDataSource, setMasterDataSource] = useState([]);
 
     //I can't have my token when I load the page for the first time...
 
@@ -30,9 +30,27 @@ export function BodyIAteThere() {
         getPlaces(token).then(res => {
             const result = res.data
             const gone = result.filter((key) => key.attributes.gone)
-            setPlaces(gone)
+            setFilteredDataSource(gone)
+            setMasterDataSource(gone)
         })
     }, []);
+
+    const searchFilterFunction = (text) => {
+        if (text) {
+            const newData = masterDataSource.filter(function (item) {
+                const itemData = item.attributes.title
+                    ? item.attributes.title.toUpperCase()
+                    : ''.toUpperCase();
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+            });
+            setFilteredDataSource(newData);
+            setSearch(text);
+        } else {
+            setFilteredDataSource(masterDataSource);
+            setSearch(text);
+        }
+    };
 
     const getToken = async () => {
         try {
@@ -91,24 +109,32 @@ export function BodyIAteThere() {
         setEditModalVisible(!editModalVisible)
     }
 
+    const renderHeader = () => {
+        return (
+            <View style={styles.search}>
+                <TextInput
+                    style={styles.textInput}
+                    onChangeText={(text) => searchFilterFunction(text)}
+                    value={search}
+                >
+                </TextInput>
+                <Pressable style={styles.searchIcon}><Text style={styles.textIcon}>🔎</Text></Pressable>
+            </View>
+        );
+    }
 
     return (
         <View style={styles.container}>
-            <View style={styles.search}>
-                <TextInput style={styles.textInput}></TextInput>
-                <Pressable style={styles.searchIcon}><Text style={styles.textIcon}>🔎</Text></Pressable>
-            </View>
-
             <Pressable
                 style={styles.button}
                 onPress={() => setModalVisible(true)}>
                 <Text style={styles.textButton}>+</Text>
             </Pressable>
-
             <View>
                 <SafeAreaView>
                     <FlatList
-                        data={places}
+                        data={filteredDataSource}
+                        ListHeaderComponent={renderHeader}
                         contentContainerStyle={{
                             display: 'flex',
                             flexDirection: 'column',
