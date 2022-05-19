@@ -7,7 +7,6 @@ import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiC
 
 export function BodyIWantToTry() {
     const { token, setToken } = useContext(Token);
-    const [placesNotGone, setPlacesNotGone] = useState("");
     const [modalVisible, setModalVisible] = useState(false);
     const [editModalVisible, setEditModalVisible] = useState(false);
     const [title, setTitle] = useState("");
@@ -17,14 +16,35 @@ export function BodyIWantToTry() {
     const [comment, setComment] = useState("");
     const [dataToEdit, setDataToEdit] = useState("");
     const [idToEdit, setIdToEdit] = useState("");
+    const [search, setSearch] = useState('');
+    const [filteredDataSource, setFilteredDataSource] = useState([]);
+    const [masterDataSource, setMasterDataSource] = useState([]);
 
     useEffect(() => {
         getPlaces(token).then(res => {
             const result = res.data
             const notGone = result.filter((key) => !key.attributes.gone)
-            setPlacesNotGone(notGone)
+            setFilteredDataSource(notGone)
+            setMasterDataSource(notGone)
         })
     }, []);
+
+    const searchFilterFunction = (text) => {
+        if (text) {
+            const newData = masterDataSource.filter(function (item) {
+                const itemData = item.attributes.title
+                    ? item.attributes.title.toUpperCase()
+                    : ''.toUpperCase();
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+            });
+            setFilteredDataSource(newData);
+            setSearch(text);
+        } else {
+            setFilteredDataSource(masterDataSource);
+            setSearch(text);
+        }
+    };
 
     const sendPlace = () => {
         const data = {
@@ -74,12 +94,23 @@ export function BodyIWantToTry() {
         setEditModalVisible(!editModalVisible)
     }
 
-    return (
-        <View style={styles.container}>
+    const renderHeader = () => {
+        return (
             <View style={styles.search}>
-                <TextInput style={styles.textInput}></TextInput>
+                <TextInput
+                    style={styles.textInput}
+                    onChangeText={(text) => searchFilterFunction(text)}
+                    value={search}
+                >
+                </TextInput>
                 <Pressable style={styles.searchIcon}><Text style={styles.textIcon}>🔎</Text></Pressable>
             </View>
+        );
+    }
+
+    return (
+        <View style={styles.container}>
+
             <Pressable
                 style={styles.button}
                 onPress={() => setModalVisible(true)}>
@@ -89,7 +120,8 @@ export function BodyIWantToTry() {
             <View>
                 <SafeAreaView>
                     <FlatList
-                        data={placesNotGone}
+                        data={filteredDataSource}
+                        ListHeaderComponent={renderHeader}
                         contentContainerStyle={{
                             display: 'flex',
                             flexDirection: 'column',
