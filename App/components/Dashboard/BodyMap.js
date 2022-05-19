@@ -50,8 +50,8 @@ export function BodyMap() {
                     ) : null }
                 <Marker coordinate={{ latitude: 45.615285, longitude: 5.210490 }} // I live exactly here
                     pinColor={"purple"}
-                    title={"title"}
-                    description={"description"} />
+                    title={"My home"}
+                    description={"The best place ever, better than a restaurant"} />
             </MapView>
         </View>
     );

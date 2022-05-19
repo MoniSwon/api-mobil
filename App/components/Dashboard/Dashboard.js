@@ -5,6 +5,15 @@ import { BodyIAteThere } from './BodyIAteThere';
 import { BodyIWantToTry } from './BodyIWantToTry';
 import { BodyMap } from './BodyMap';
 
+//List of what I still need to do :
+// When we add a restaurant, a select button to choose if the restaurant is asian, burger, etc.
+// Filter the kind of restaurant
+// Make the text input into the map body functionnal
+// Add a filter in the type of restaurant
+// Filter only new or not new restaurant
+// Geolocalize myself
+// When we click on a restaurant, we should see details then be able to edit it, click a button which redirect us to google map
+// A button to select a random restaurant
 
 export default function Dashboard() {
     const [isPress, setIsPress] = useState(true);

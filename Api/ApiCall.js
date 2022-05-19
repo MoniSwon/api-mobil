@@ -29,3 +29,8 @@ export async function deletePlace(token, id) {
     const answer = await axios.delete("https://digitalcampus.nerdy-bear.com/api/places/" + id, { headers: {"Authorization" : `Bearer ${token}`} })
     return answer.data
 }
+
+export async function getTypes(token) {
+    const answer = await axios.get("https://digitalcampus.nerdy-bear.com/api/types/", { headers: {"Authorization" : `Bearer ${token}`} })
+    return answer.data
+}

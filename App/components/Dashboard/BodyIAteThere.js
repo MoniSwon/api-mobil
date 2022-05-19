@@ -3,8 +3,10 @@ import { styles } from './Dashboard.style';
 import { useState, useContext, useEffect } from "react";
 import { Token } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
-import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiCall';
+import { getPlaces, postPlaces, putPlaces, deletePlace, getTypes } from '../../../Api/ApiCall';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import RNPickerSelect from 'react-native-picker-select';
+
 
 export function BodyIAteThere() {
     const { token, setToken } = useContext(Token);
@@ -20,6 +22,8 @@ export function BodyIAteThere() {
     const [search, setSearch] = useState('');
     const [filteredDataSource, setFilteredDataSource] = useState([]);
     const [masterDataSource, setMasterDataSource] = useState([]);
+    const [types, setTypes] = useState([]);
+
 
     //I can't have my token when I load the page for the first time...
 
@@ -33,7 +37,24 @@ export function BodyIAteThere() {
             setFilteredDataSource(gone)
             setMasterDataSource(gone)
         })
+        getTypes(token).then(res => {
+            const data = res.data.map(x => {
+                return {
+                    name: x.attributes.name,
+                    id: x.id
+                }
+            })
+            setTypes(data)
+        })
     }, []);
+    console.log(types)
+
+
+    const selectButton = (label, value) => {
+        return (
+            { label: label, value: value }
+        );
+    }
 
     const searchFilterFunction = (text) => {
         if (text) {
@@ -125,6 +146,14 @@ export function BodyIAteThere() {
 
     return (
         <View style={styles.container}>
+            <RNPickerSelect
+                onValueChange={(value) => console.log(value)}
+                items={[
+                    { label: 'Football', value: 'football' },
+                    { label: 'Baseball', value: 'baseball' },
+                    { label: 'Hockey', value: 'hockey' },
+                ]}
+            />
             <Pressable
                 style={styles.button}
                 onPress={() => setModalVisible(true)}>
