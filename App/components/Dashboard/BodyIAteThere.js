@@ -5,6 +5,7 @@ import { Token, UserData } from '../../context/context';
 import { FlatList, SafeAreaView } from 'react-native';
 import { getPlaces, postPlaces, putPlaces, deletePlace } from '../../../Api/ApiCall';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { reloadAsync } from 'expo-updates';
 
 export function BodyIAteThere() {
     const [places, setPlaces] = useState("");
@@ -19,8 +20,13 @@ export function BodyIAteThere() {
     const [dataToEdit, setDataToEdit] = useState("");
     const [idToEdit, setIdToEdit] = useState("");
 
+
+    //I can't have my token when I load the page for the first time...
+
     useEffect(() => {
-        getToken().then(res => setToken(res))
+        getToken().then(res => {
+            setToken(res);
+        })
         getPlaces(token).then(res => {
             const result = res.data
             const gone = result.filter((key) => key.attributes.gone)
@@ -31,7 +37,7 @@ export function BodyIAteThere() {
     const getToken = async () => {
         try {
             const jsonValue = await AsyncStorage.getItem('token')
-            return jsonValue != null ? jsonValue : null;
+            return jsonValue
         } catch (e) {
             console.log(e)
         }

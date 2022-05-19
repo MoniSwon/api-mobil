@@ -11,8 +11,6 @@ export function BodyMap() {
     const [placesNotGone, setPlacesNotGone] = useState("");
     const { token, setToken } = useContext(Token);
 
-
-
     useEffect(() => {
         getPlaces(token).then(res => {
             const result = res.data

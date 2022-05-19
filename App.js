@@ -9,8 +9,6 @@ import { useState } from 'react';
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -21,7 +19,7 @@ export default function App() {
 const isSigned = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('token')
-    return jsonValue != null ? jsonValue : false;
+    return jsonValue != null ? true : false;
   } catch(e) {
     console.log(e)
   }
@@ -43,11 +41,8 @@ const isSigned = async () => {
             <Stack.Screen name="Dashboard" component={DashboardScreen} />
           </Stack.Navigator>
           )}
-          
         </UserData.Provider>
       </Token.Provider>
     </NavigationContainer>
-
-
   );
 }
