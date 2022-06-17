@@ -38,7 +38,6 @@ export default function Login() {
         try {
             const jsonValue = value
           await AsyncStorage.setItem('token', jsonValue)
-          console.log(jsonValue)
         } catch (e) {
           console.log(e)
         }

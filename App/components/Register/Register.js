@@ -18,7 +18,6 @@ export default function Register() {
             email: email,
             password: password
         }
-        console.log(data)
         createUser(data).then(res => navigation.navigate('Login')).catch(error =>setError(error.toString()));
     }
 

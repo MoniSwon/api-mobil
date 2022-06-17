@@ -47,7 +47,6 @@ export function BodyIAteThere() {
             setTypes(data)
         })
     }, []);
-    console.log(types)
 
 
     const selectButton = (label, value) => {
@@ -146,14 +145,14 @@ export function BodyIAteThere() {
 
     return (
         <View style={styles.container}>
-            <RNPickerSelect
+            {/* <RNPickerSelect
                 onValueChange={(value) => console.log(value)}
                 items={[
                     { label: 'Football', value: 'football' },
                     { label: 'Baseball', value: 'baseball' },
                     { label: 'Hockey', value: 'hockey' },
                 ]}
-            />
+            /> */}
             <Pressable
                 style={styles.button}
                 onPress={() => setModalVisible(true)}>
